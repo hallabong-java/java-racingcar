@@ -23,9 +23,7 @@ import static java.util.stream.Collectors.toList;
 
 public class CarName {
     public static final int MAX_NAME_LENGTH = 5;
-    private static String names;
     private static String[] nameString;
-    List<Car> nameList;
 
     public CarName(final String names) {
         splitString(names);
@@ -33,7 +31,8 @@ public class CarName {
     }
 
     private void splitString(final String names){
-        nameString = names.split(",");
+        String[] nameString = names.split(",");
+        this.nameString = nameString;
     }
 
     private void validate(final String[] nameString) {

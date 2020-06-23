@@ -1,5 +1,5 @@
 /*
- * CarNameTest.java            1.0       2020-06-22
+ * CarNameTest.java            1.1       2020-06-23
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 차 이름 잘 받는지 테스트
  *
  * @author 조연우
- * @version 1.0     2020년 6월 22일
+ * @version 1.1     2020년 6월 23일
  */
 
 class CarNameTest {

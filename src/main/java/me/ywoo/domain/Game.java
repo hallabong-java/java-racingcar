@@ -1,5 +1,5 @@
 /*
- * Game.java            1.1      2020-06-26
+ * Game.java            1.2      2020-06-27
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -7,8 +7,6 @@
  */
 
 package me.ywoo.domain;
-
-import me.ywoo.view.InputView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,28 +16,38 @@ import java.util.stream.Collectors;
  * 게임을 진행하는 클래스
  *
  * @author 조연우
- * @version 1.1     2020년 6월 26일
+ * @version 1.2     2020년 6월 27일
  */
 
 public class Game {
     private List<Car> cars;
+    public List<Car> winners;
     //int countCars = carName.getName().size();
 
     public Game(CarName carName) {
-        for(String thisCarName : carName.getName()){
+        for (String thisCarName : carName.getName()) {
             cars.add(new Car(thisCarName, 0));
         }
     }
 
-    public void moveAllCars(){
+    public void moveAllCars() {
         RandomNumber randomNumber = new RandomNumber();
-        for(Car car : cars){
+        for (Car car : cars) {
             car.movePosition(randomNumber.generateRandomNumber());
         }
     }
 
-  //  public List<String> findWinner(){
+    public void findWinner() {
+        Car winnerCar = cars.stream()
+                .max(Car::compareTwoPositions)
+                .get();
+        winners = cars.stream()
+                .filter(car -> car.isWinnerToo(winnerCar))
+                .collect(Collectors.toList());
+    }
 
-  //  }
+    public List<Car> getWinners(){
+        return winners;
+    }
 
 }

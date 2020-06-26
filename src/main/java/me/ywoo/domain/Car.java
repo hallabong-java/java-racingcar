@@ -1,5 +1,5 @@
 /*
- * Car.java            1.1       2020-06-26
+ * Car.java            1.12       2020-06-27
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -13,7 +13,7 @@ package me.ywoo.domain;
  * Car 객체 생성
  *
  * @author 조연우
- * @version 1.1     2020년 6월 26일
+ * @version 1.2     2020년 6월 27일
  */
 
 public class Car {
@@ -28,10 +28,18 @@ public class Car {
         this.position = position;
     }
 
-    public void movePosition(int number){
-        if(number>=STANDARD_OF_START){
+    public void movePosition(int number) {
+        if (number >= STANDARD_OF_START) {
             this.position++;
         }
+    }
+
+    public int compareTwoPositions(Car comparedCar) {
+        return Math.abs(this.getPosition() - comparedCar.getPosition());
+    }
+
+    public boolean isWinnerToo(Car anotherWinner) {
+        return this.getPosition() == anotherWinner.getPosition();
     }
 
     public int getPosition() {

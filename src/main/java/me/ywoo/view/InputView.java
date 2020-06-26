@@ -1,5 +1,5 @@
 /*
- * inputView.java            1.0       2020-06-23
+ * InputView.java            1.0       2020-06-23
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -11,14 +11,14 @@ package me.ywoo.view;
 import java.util.Scanner;
 
 /**
- * inputView.class
+ * InputView.class
  * 사용자로부터 입력 받는 클래스
  *
  * @author 조연우
  * @version 1.0     2020년 6월 23일
  */
 
-public class inputView {
+public class InputView {
     private static final Scanner scan = new Scanner(System.in);
 
     public static String receiveNames(){

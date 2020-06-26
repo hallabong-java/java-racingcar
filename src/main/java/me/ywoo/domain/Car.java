@@ -8,8 +8,6 @@
 
 package me.ywoo.domain;
 
-import java.util.List;
-
 /**
  * Car.class
  * Car 객체 생성
@@ -20,12 +18,27 @@ import java.util.List;
 
 public class Car {
 
-    private int position = 0;
-    private List<String> name;
+    private static final int STANDARD_OF_START = 4;
 
-    public Car() {
-        List<String> name = CarName.getName();
+    private int position;
+    private String name;
+
+    public Car(String name, int position) {
         this.name = name;
+        this.position = position;
     }
 
+    public void movePosition(int number){
+        if(number>=STANDARD_OF_START){
+            this.position++;
+        }
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

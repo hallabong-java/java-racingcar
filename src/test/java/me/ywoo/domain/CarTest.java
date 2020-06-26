@@ -27,7 +27,7 @@ class CarTest {
     @DisplayName("Car() - 이름 받아서 객체 생성")
     @ParameterizedTest
     @ValueSource(strings = {"dus,hello,hi"})
-    void Car_GenerateInstance(String[] names){
+    void Car_GenerateInstance(String names){
         assertThat(new Car()).isInstanceOf(Car.class);
     }
 }

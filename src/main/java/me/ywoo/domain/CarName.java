@@ -29,7 +29,7 @@ public class CarName {
     }
 
     private void splitString(final String names) {
-        List<String> nameString = Arrays.asList(names.split(","));
+        nameString = Arrays.asList(names.split(","));
         this.nameString = nameString;
     }
 

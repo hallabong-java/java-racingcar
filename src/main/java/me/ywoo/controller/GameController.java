@@ -25,6 +25,8 @@ import java.util.List;
  */
 
 public class GameController {
+    private static final int MINIMUM_TO_GAME = 0;
+
     private CarName carName;
     private Game game;
     private InputView inputView = new InputView();
@@ -43,13 +45,13 @@ public class GameController {
 
     public void validCount(String inputPlayCount) {
         playCounts = Integer.parseInt(inputPlayCount);
-        if (playCounts < 1) {
+        if (playCounts <= MINIMUM_TO_GAME) {
             throw new IllegalArgumentException("1회 이상 게임해야 합니다.");
         }
     }
 
     public void gameStart() {
-        while (playCounts > 0) {
+        while (playCounts > MINIMUM_TO_GAME) {
             game.moveAllCars();
             List<Car> cars = game.getCars();
             for (Car car : cars) {

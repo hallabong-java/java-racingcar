@@ -20,12 +20,13 @@ import java.util.stream.Collectors;
  */
 
 public class Game {
+    private static final int INITIALIZE = 0;
     private List<Car> cars = null;
     public List<Car> winners;
 
     public Game(CarName carName) {
         for (String thisCarName : carName.getName()) {
-            cars.add(new Car(thisCarName, 0));
+            cars.add(new Car(thisCarName, INITIALIZE));
         }
     }
 

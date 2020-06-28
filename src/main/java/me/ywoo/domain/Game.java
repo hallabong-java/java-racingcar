@@ -46,8 +46,15 @@ public class Game {
                 .collect(Collectors.toList());
     }
 
-    public List<Car> getWinners(){
-        return winners;
+    public List<String> getWinners() {
+        List<String> winnersName = null;
+        for (Car winner : winners) {
+            winnersName.add(winner.getName());
+        }
+        return winnersName;
     }
 
+    public List<Car> getCars(){
+        return cars;
+    }
 }

@@ -12,6 +12,7 @@ import me.ywoo.domain.Car;
 import me.ywoo.domain.CarName;
 import me.ywoo.domain.Game;
 import me.ywoo.view.InputView;
+import me.ywoo.view.OutputView;
 
 import java.util.List;
 
@@ -26,12 +27,18 @@ import java.util.List;
 public class GameController {
     private CarName carName;
     private Game game;
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
+
+    public List<String> winners;
     private int playCounts;
 
-    public GameController(CarName carName, Game game){
-        validCount(InputView.receiveNumber());
-        carName = new CarName(InputView.receiveNames());
+    public void run(){
+        carName = new CarName(inputView.receiveNames());
+        String inputPlayCounts = inputView.receiveNumber();
+        validCount(inputPlayCounts);
         game = new Game(carName);
+        gameStart();
     }
 
     public void validCount(String inputPlayCount){
@@ -44,9 +51,15 @@ public class GameController {
     public void gameStart(){
         while(playCounts>0){
             game.moveAllCars();
+            List<Car> cars = game.getCars();
+            for(Car car : cars) {
+                OutputView.printEachCars(car.getName(), car.getPosition());
+            }
             playCounts--;
         }
         game.findWinner();
-        List<Car> winners = game.getWinners();
+        winners = game.getWinners();
+        OutputView.printWinners(winners);
+
     }
 }

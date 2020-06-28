@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameControllerTest {
     @DisplayName("validCount()_유효한수인지확인")
     @Test
-    void checkCountIsValid(String inputPlayCounts){
-        assertThatThrownBy(()->new GameController())
+    void checkCountIsValid(String inputPlayCounts) {
+        assertThatThrownBy(() -> new GameController())
                 .isInstanceOf(GameController.class)
                 .hasMessage("1회 이상 게임해야 합니다.");
     }

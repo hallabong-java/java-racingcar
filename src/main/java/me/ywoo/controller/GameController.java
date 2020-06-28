@@ -33,7 +33,7 @@ public class GameController {
     public List<String> winners;
     private int playCounts;
 
-    public void run(){
+    public void run() {
         carName = new CarName(inputView.receiveNames());
         String inputPlayCounts = inputView.receiveNumber();
         validCount(inputPlayCounts);
@@ -41,18 +41,18 @@ public class GameController {
         gameStart();
     }
 
-    public void validCount(String inputPlayCount){
+    public void validCount(String inputPlayCount) {
         playCounts = Integer.parseInt(inputPlayCount);
-        if (playCounts<1){
+        if (playCounts < 1) {
             throw new IllegalArgumentException("1회 이상 게임해야 합니다.");
         }
     }
 
-    public void gameStart(){
-        while(playCounts>0){
+    public void gameStart() {
+        while (playCounts > 0) {
             game.moveAllCars();
             List<Car> cars = game.getCars();
-            for(Car car : cars) {
+            for (Car car : cars) {
                 OutputView.printEachCars(car.getName(), car.getPosition());
             }
             playCounts--;

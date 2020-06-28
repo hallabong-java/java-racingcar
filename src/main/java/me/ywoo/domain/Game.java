@@ -20,9 +20,8 @@ import java.util.stream.Collectors;
  */
 
 public class Game {
-    private List<Car> cars;
+    private List<Car> cars = null;
     public List<Car> winners;
-    //int countCars = carName.getName().size();
 
     public Game(CarName carName) {
         for (String thisCarName : carName.getName()) {
@@ -54,7 +53,7 @@ public class Game {
         return winnersName;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 }

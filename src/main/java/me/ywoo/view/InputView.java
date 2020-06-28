@@ -21,12 +21,12 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scan = new Scanner(System.in);
 
-    public static String receiveNames(){
+    public static String receiveNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
         return scan.nextLine();
     }
 
-    public static String receiveNumber(){
+    public static String receiveNumber() {
         System.out.println("시도할 횟수는 몇회인가요?");
         return scan.nextLine();
     }

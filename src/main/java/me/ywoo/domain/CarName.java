@@ -28,7 +28,7 @@ public class CarName {
         validate(nameString);
     }
 
-    private void splitString(final String names){
+    private void splitString(final String names) {
         List<String> nameString = Arrays.asList(names.split(","));
         this.nameString = nameString;
     }

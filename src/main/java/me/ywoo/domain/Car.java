@@ -16,7 +16,7 @@ package me.ywoo.domain;
  * @version 1.2     2020년 6월 27일
  */
 
-public class Car {
+public class Car implements compareTwo {
 
     private static final int STANDARD_OF_START = 4;
 
@@ -34,6 +34,7 @@ public class Car {
         }
     }
 
+    @Override
     public int compareTwoPositions(Car comparedCar) {
         return Math.abs(this.getPosition() - comparedCar.getPosition());
     }

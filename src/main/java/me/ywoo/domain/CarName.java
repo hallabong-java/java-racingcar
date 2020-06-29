@@ -8,6 +8,7 @@
 
 package me.ywoo.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class CarName {
     public static final int MAX_NAME_LENGTH = 5;
-    private static List<String> nameString;
+    private static List<String> nameString = new ArrayList<String>();
 
     public CarName(final String names) {
         splitString(names);
@@ -30,7 +31,6 @@ public class CarName {
 
     private void splitString(final String names) {
         nameString = Arrays.asList(names.split(","));
-        this.nameString = nameString;
     }
 
     private void validate(final List<String> nameString) {

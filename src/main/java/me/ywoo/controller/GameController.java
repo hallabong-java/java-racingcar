@@ -14,6 +14,7 @@ import me.ywoo.domain.Game;
 import me.ywoo.view.InputView;
 import me.ywoo.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class GameController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
 
-    public List<String> winners;
+    public List<String> winners = new ArrayList<String>();
     private int playCounts;
 
     public void run() {

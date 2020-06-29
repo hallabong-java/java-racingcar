@@ -34,4 +34,11 @@ class GameTest {
         //List<String> expected = Arrays.asList("", "hi", "hello");
         assertThat(new Game(new CarName("hi,hello"))).isInstanceOf(Game.class);
     }
+
+    @DisplayName("Game()-null 에러 예외처리하는 함수")
+    @Test
+    void Game_Except_Null_Instance(){
+        assertThat(new Game(new CarName(null)))
+                .isInstanceOf(NullPointerException.class);
+    }
 }

@@ -17,21 +17,21 @@ import java.util.stream.Collectors;
  * 게임을 진행하는 클래스
  *
  * @author 조연우
- * @version 1.2     2020년 6월 27일
+ * @version 1.3     2020년 6월 30일
  */
 
 public class Game {
     private static final int INITIALIZE = 0;
 
     private List<Car> cars = new ArrayList<Car>();
-    public List<Car> winners= new ArrayList<Car>();
+    public List<Car> winners = new ArrayList<Car>();
     List<String> winnersName = new ArrayList<String>();
 
     public Game(CarName carName) {
         for (String thisCarName : carName.getName()) {
             Car addCar = new Car(thisCarName, INITIALIZE);
             cars.add(addCar);
-            //throw new NullPointerException("null pointer!!");
+            //throw new NullPointerException("null pointer");
         }
     }
 
@@ -42,16 +42,17 @@ public class Game {
         }
     }
 
-    public void findWinner() {
+    public List<Car> findWinner() {
         Car winnerCar = cars.stream()
                 .max(Car::compareTwoPositions)
                 .get();
         winners = cars.stream()
                 .filter(car -> car.isWinnerToo(winnerCar))
                 .collect(Collectors.toList());
+        return winners;
     }
 
-    public List<String> getWinners() {
+    public List<String> getWinners(List<Car> winners) {
         for (Car winner : winners) {
             winnersName.add(winner.getName());
         }

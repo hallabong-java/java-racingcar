@@ -64,6 +64,5 @@ public class GameController {
         }
         winners = game.getWinners(game.findWinner());
         OutputView.printWinners(winners);
-
     }
 }

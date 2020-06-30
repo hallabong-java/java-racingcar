@@ -9,6 +9,7 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,6 @@ public class Game {
     private static final int INITIALIZE = 0;
 
     private List<Car> cars = new ArrayList<Car>();
-    public List<Car> winners = new ArrayList<Car>();
     List<String> winnersName = new ArrayList<String>();
 
     public Game(CarName carName) {
@@ -43,11 +43,13 @@ public class Game {
     }
 
     public List<Car> findWinner() {
-        Car winnerCar = cars.stream()
-                .max(Car::compareTwoPositions)
+        List<Car> winners;
+        int winnerCarPosition = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
                 .get();
         winners = cars.stream()
-                .filter(car -> car.isWinnerToo(winnerCar))
+                .filter(car -> car.isWinnerToo(winnerCarPosition))
                 .collect(Collectors.toList());
         return winners;
     }

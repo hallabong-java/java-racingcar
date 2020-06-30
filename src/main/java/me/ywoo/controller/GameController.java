@@ -52,16 +52,17 @@ public class GameController {
     }
 
     public void gameStart() {
+        OutputView.printResult();
         while (playCounts > MINIMUM_TO_GAME) {
             game.moveAllCars();
             List<Car> cars = game.getCars();
             for (Car car : cars) {
                 OutputView.printEachCars(car.getName(), car.getPosition());
             }
+            OutputView.println();
             playCounts--;
         }
-        game.findWinner();
-        winners = game.getWinners();
+        winners = game.getWinners(game.findWinner());
         OutputView.printWinners(winners);
 
     }

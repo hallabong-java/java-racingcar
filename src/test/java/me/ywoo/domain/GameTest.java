@@ -1,5 +1,5 @@
 /*
- * GameTest.java            1.1       2020-06-30
+ * GameTest.java            2.0       2020-07-02
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -11,19 +11,15 @@ package me.ywoo.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.InstanceOfAssertFactories.ARRAY;
 
 /**
  * GameTest.class
  * 게임을 진행을 테스트하는 클래스
  *
  * @author 조연우
- * @version 1.1     2020년 6월 30일
+ * @version 2.0     2020년 7월 2일
  */
 
 class GameTest {
@@ -31,13 +27,13 @@ class GameTest {
     @DisplayName("Game()-List에 car객체들을 생성하는 함수")
     @Test
     void Game_GenerateInstance() {
-        assertThat(new Game(new CarName("hi,hello"))).isInstanceOf(Game.class);
+        assertThat(new Game(new CarNames("hi,hello"))).isInstanceOf(Game.class);
     }
 
     @DisplayName("Game()-null 에러 예외처리하는 함수")
     @Test
     void Game_Except_Null_Instance() {
-        assertThatThrownBy(() -> new Game(new CarName("")))
+        assertThatThrownBy(() -> new Game(new CarNames("")))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("null pointer");
     }

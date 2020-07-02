@@ -22,26 +22,30 @@ import java.util.List;
 
 public class CarNames {
     public static final int MAX_NAME_LENGTH = 5;
-    private List<String> arrayOfNames = new ArrayList<String>();
+    private List<CarName> arrayOfNames = new ArrayList<CarName>();
 
-    public CarNames(final String names) {
-        splitString(names);
+    public CarNames(final String nameString) {
+        splitString(nameString);
         validate(arrayOfNames);
     }
 
-    private void splitString(final String names) {
-        arrayOfNames = Arrays.asList(names.split(","));
+    private void splitString(final String nameString) {
+        String[] carNameSplit = nameString.split(",");
+        for (String name : carNameSplit) {
+            CarName carName = new CarName(name);
+            arrayOfNames.add(carName);
+        }
     }
 
-    private void validate(final List<String> arrayOfNames) {
-        for (String name : arrayOfNames) {
-            if (name.length() > MAX_NAME_LENGTH) {
+    private void validate(final List<CarName> arrayOfNames) {
+        for (CarName carName : arrayOfNames) {
+            if (carName.getCarName().length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException("이름은 다섯글자 이내입니다.");
             }
         }
     }
 
-    public List<String> getName() {
+    public List<CarName> getNameArray() {
         return arrayOfNames;
     }
 }

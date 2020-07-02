@@ -23,8 +23,8 @@ public class Car {
     private int position;
     private String name;
 
-    public Car(String name, int position) {
-        this.name = name;
+    public Car(CarName carName, int position) {
+        this.name = carName.getCarName();
         this.position = position;
     }
 

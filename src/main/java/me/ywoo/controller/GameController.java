@@ -9,7 +9,7 @@
 package me.ywoo.controller;
 
 import me.ywoo.domain.Car;
-import me.ywoo.domain.CarName;
+import me.ywoo.domain.CarNames;
 import me.ywoo.domain.Game;
 import me.ywoo.view.InputView;
 import me.ywoo.view.OutputView;
@@ -31,10 +31,10 @@ public class GameController {
     private int playCounts;
 
     public void run() {
-        CarName carName = new CarName(InputView.receiveNames());
+        CarNames carNames = new CarNames(InputView.receiveNames());
         String inputPlayCounts = InputView.receiveNumber();
         validCount(inputPlayCounts);
-        Game game = new Game(carName);
+        Game game = new Game(carNames);
         gameStart(game);
     }
 

@@ -9,7 +9,6 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,11 +26,11 @@ public class Game {
     private List<Car> cars = new ArrayList<Car>();
     List<String> winnersName = new ArrayList<String>();
 
-    public Game(CarName carName) {
-        for (String thisCarName : carName.getName()) {
+    public Game(CarNames carNames) {
+        for (CarName thisCarName : carNames.getNameArray()) {
             Car addCar = new Car(thisCarName, INITIALIZE);
             cars.add(addCar);
-            if(thisCarName=="") throw new NullPointerException("null pointer");
+            if (thisCarName.getCarName().equals("")) throw new NullPointerException("null pointer");
         }
     }
 

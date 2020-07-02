@@ -19,8 +19,8 @@ class CarNameTest {
     @ParameterizedTest
     @ValueSource(strings = {"test"})
     void CarName_ReturnString(final String name) {
-        String expected= "test";
-        String actual= new CarName(name).getCarName();
+        String expected = "test";
+        String actual = new CarName(name).getCarName();
         assertThat(actual).isEqualTo(expected);
     }
 }

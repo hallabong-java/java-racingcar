@@ -10,7 +10,7 @@ public class RandomNumber {
 
     private static final int BOUNDARY = 10;
 
-    public int generateRandomNumber(){
+    public int generateRandomNumber() {
         return new Random().nextInt(BOUNDARY);
     }
 }

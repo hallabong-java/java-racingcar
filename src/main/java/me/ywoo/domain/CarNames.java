@@ -1,5 +1,5 @@
 /*
- * CarName.java            1.1       2020-06-26
+ * CarNames.java            2.0       2020-07-02
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -13,35 +13,35 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * CarName.class
- * CarName 객체 생성
+ * CarNames.class
+ * CarNames 객체 생성
  *
  * @author 조연우
- * @version 1.1     2020년 6월 26일
+ * @version 2.0     2020년 7월 2일
  */
 
-public class CarName {
+public class CarNames {
     public static final int MAX_NAME_LENGTH = 5;
-    private static List<String> nameString = new ArrayList<String>();
+    private List<String> arrayOfNames = new ArrayList<String>();
 
-    public CarName(final String names) {
+    public CarNames(final String names) {
         splitString(names);
-        validate(nameString);
+        validate(arrayOfNames);
     }
 
     private void splitString(final String names) {
-        nameString = Arrays.asList(names.split(","));
+        arrayOfNames = Arrays.asList(names.split(","));
     }
 
-    private void validate(final List<String> nameString) {
-        for (String name : nameString) {
+    private void validate(final List<String> arrayOfNames) {
+        for (String name : arrayOfNames) {
             if (name.length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException("이름은 다섯글자 이내입니다.");
             }
         }
     }
 
-    public static List<String> getName() {
-        return nameString;
+    public List<String> getName() {
+        return arrayOfNames;
     }
 }

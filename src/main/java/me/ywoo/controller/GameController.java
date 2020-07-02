@@ -56,7 +56,7 @@ public class GameController {
             OutputView.println();
             playCounts--;
         }
-        winners = game.getWinners(game.findWinner());
+        winners = game.findWinners();
         OutputView.printWinners(winners);
     }
 }

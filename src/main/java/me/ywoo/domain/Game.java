@@ -1,5 +1,5 @@
 /*
- * Game.java            1.2      2020-06-27
+ * Game.java            2.0      2020-07-02
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -17,14 +17,14 @@ import java.util.stream.Collectors;
  * 게임을 진행하는 클래스
  *
  * @author 조연우
- * @version 1.3     2020년 6월 30일
+ * @version 2.0     2020년 7월 2일
  */
 
 public class Game {
     private static final int INITIALIZE = 0;
 
     private List<Car> cars = new ArrayList<Car>();
-    List<String> winnersName = new ArrayList<String>();
+    private List<String> winnersName = new ArrayList<String>();
 
     public Game(CarNames carNames) {
         for (CarName thisCarName : carNames.getNameArray()) {
@@ -41,19 +41,14 @@ public class Game {
         }
     }
 
-    public List<Car> findWinner() {
-        List<Car> winners;
+    public List<String> findWinners() {
         int winnerCarPosition = cars.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
                 .get();
-        winners = cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.isWinnerToo(winnerCarPosition))
                 .collect(Collectors.toList());
-        return winners;
-    }
-
-    public List<String> getWinners(List<Car> winners) {
         for (Car winner : winners) {
             winnersName.add(winner.getName());
         }

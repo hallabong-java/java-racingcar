@@ -31,7 +31,7 @@ public class Game {
         for (String thisCarName : carName.getName()) {
             Car addCar = new Car(thisCarName, INITIALIZE);
             cars.add(addCar);
-            //throw new NullPointerException("null pointer");
+            if(thisCarName=="") throw new NullPointerException("null pointer");
         }
     }
 

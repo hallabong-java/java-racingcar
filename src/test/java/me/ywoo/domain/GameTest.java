@@ -1,5 +1,5 @@
 /*
- * GameTest.java            2.0       2020-07-02
+ * GameTest.java            2.1       2020-07-03
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 게임을 진행을 테스트하는 클래스
  *
  * @author 조연우
- * @version 2.0     2020년 7월 2일
+ * @version 2.1     2020년 7월 3일
  */
 
 class GameTest {
@@ -30,11 +30,11 @@ class GameTest {
         assertThat(new Game(new CarNames("hi,hello"))).isInstanceOf(Game.class);
     }
 
-    @DisplayName("Game()-null 에러 예외처리하는 함수")
+    @DisplayName("Game()-받아온 이름에 아무것도 없을때 예외처리하는 함수")
     @Test
     void Game_Except_Null_Instance() {
         assertThatThrownBy(() -> new Game(new CarNames("")))
-                .isInstanceOf(NullPointerException.class)
-                .hasMessage("null pointer");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("there is nothing");
     }
 }

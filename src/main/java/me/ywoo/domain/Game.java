@@ -1,5 +1,5 @@
 /*
- * Game.java            2.0      2020-07-02
+ * Game.java            2.1      2020-07-03
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * 게임을 진행하는 클래스
  *
  * @author 조연우
- * @version 2.0     2020년 7월 2일
+ * @version 2.1     2020년 7월 3일
  */
 
 public class Game {
@@ -30,7 +30,7 @@ public class Game {
         for (CarName thisCarName : carNames.getNameArray()) {
             Car addCar = new Car(thisCarName, INITIALIZE);
             cars.add(addCar);
-            if (thisCarName.getCarName().equals("")) throw new NullPointerException("null pointer");
+            if (thisCarName.getCarName().equals("")) throw new IllegalArgumentException("there is nothing");
         }
     }
 

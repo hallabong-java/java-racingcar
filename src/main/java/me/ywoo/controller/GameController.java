@@ -27,35 +27,42 @@ import java.util.List;
 
 public class GameController {
     private static final int MINIMUM_TO_GAME = 0;
-    private List<String> winners = new ArrayList<String>();
-    private int playCounts;
+    private int countsOfPlays;
 
     public void run() {
         CarNames carNames = new CarNames(InputView.receiveNames());
         String inputPlayCounts = InputView.receiveNumber();
-        validCount(inputPlayCounts);
+        validateCount(inputPlayCounts);
         Game game = new Game(carNames);
         gameStart(game);
     }
 
-    private void validCount(String inputPlayCount) {
-        playCounts = Integer.parseInt(inputPlayCount);
-        if (playCounts <= MINIMUM_TO_GAME) {
+    private void validateCount(String inputPlayCount) {
+        try {
+            countsOfPlays = Integer.parseInt(inputPlayCount);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("횟수는 숫자를 입력해야 합니다.");
+        }
+        if (countsOfPlays <= MINIMUM_TO_GAME) {
             throw new IllegalArgumentException("1회 이상 게임해야 합니다.");
         }
     }
 
     private void gameStart(Game game) {
+        List<String> winners = new ArrayList<String>();
         OutputView.printResult();
-        while (playCounts > MINIMUM_TO_GAME) {
+
+        while (countsOfPlays > MINIMUM_TO_GAME) {
             game.moveAllCars();
+
             List<Car> cars = game.getCars();
             for (Car car : cars) {
                 OutputView.printEachCars(car.getName(), car.getPosition());
             }
             OutputView.println();
-            playCounts--;
+            countsOfPlays--;
         }
+
         winners = game.findWinners();
         OutputView.printWinners(winners);
     }

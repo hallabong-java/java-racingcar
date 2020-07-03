@@ -45,7 +45,7 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
-    @DisplayName("isWinner()_position이 같은 객체면 true 반환")
+    @DisplayName("isSame()_position이 같은 객체면 true 반환")
     @Test
     public void return_True_SamePosition() {
         final Car testCar1 = new Car(new CarName("test"), 4);
@@ -53,4 +53,11 @@ class CarTest {
         assertThat(actual).isEqualTo(true);
     }
 
+    @DisplayName("isSame()_position이 다른 객체면 false 반환")
+    @Test
+    public void return_False_SamePosition() {
+        final Car testCar1 = new Car(new CarName("test"), 4);
+        boolean actual = testCar1.isSame(5);
+        assertThat(actual).isEqualTo(false);
+    }
 }

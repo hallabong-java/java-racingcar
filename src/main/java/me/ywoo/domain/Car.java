@@ -18,23 +18,23 @@ package me.ywoo.domain;
 
 public class Car {
 
-    private static final int STANDARD_OF_START = 4;
+    private static final int MOVABLE_LOWER_BOUND = 4;
 
     private int position;
-    private String name;
+    private CarName name;
 
     public Car(CarName carName, int position) {
-        this.name = carName.getCarName();
+        this.name = carName;
         this.position = position;
     }
 
     public void movePosition(int number) {
-        if (number >= STANDARD_OF_START) {
+        if (number >= MOVABLE_LOWER_BOUND) {
             this.position++;
         }
     }
 
-    public boolean isWinnerToo(int winnerPosition) {
+    public boolean isSame(int winnerPosition) {
         return this.getPosition() == winnerPosition;
     }
 
@@ -42,7 +42,7 @@ public class Car {
         return position;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 }

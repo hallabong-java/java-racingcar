@@ -9,7 +9,6 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,23 +21,23 @@ import java.util.List;
 
 public class CarNames {
     public static final int MAX_NAME_LENGTH = 5;
-    private List<CarName> arrayOfNames = new ArrayList<CarName>();
+    private List<CarName> carNamesDivided = new ArrayList<CarName>();
 
-    public CarNames(final String nameString) {
-        splitString(nameString);
-        validate(arrayOfNames);
+    public CarNames(final String carNames) {
+        splitString(carNames);
+        validate(carNamesDivided);
     }
 
-    private void splitString(final String nameString) {
-        String[] carNameSplit = nameString.split(",");
-        for (String name : carNameSplit) {
+    private void splitString(final String carNames) {
+        String[] carNamesDivided = carNames.split(",");
+        for (String name : carNamesDivided) {
             CarName carName = new CarName(name);
-            arrayOfNames.add(carName);
+            this.carNamesDivided.add(carName);
         }
     }
 
-    private void validate(final List<CarName> arrayOfNames) {
-        for (CarName carName : arrayOfNames) {
+    private void validate(final List<CarName> carNamesDivided) {
+        for (CarName carName : carNamesDivided) {
             if (carName.getCarName().length() > MAX_NAME_LENGTH) {
                 throw new IllegalArgumentException("이름은 다섯글자 이내입니다.");
             }
@@ -46,6 +45,6 @@ public class CarNames {
     }
 
     public List<CarName> getNameArray() {
-        return arrayOfNames;
+        return carNamesDivided;
     }
 }

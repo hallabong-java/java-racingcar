@@ -36,7 +36,7 @@ class CarNameTest {
     @DisplayName("validateName() - 이름 다섯글자 이내인지 검사")
     @ParameterizedTest
     @ValueSource(strings = {"testislongerthanfive"})
-    void CarName_InvalidName_IllegalArgumentExceptionThrown(final String name) {
+    void validate_InvalidInputName_ExceptionThrown(final String name) {
         assertThatThrownBy(() -> new CarName(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 다섯글자 이내입니다.");

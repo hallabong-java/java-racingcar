@@ -8,6 +8,8 @@
 
 package me.ywoo.domain;
 
+import java.util.Optional;
+
 /**
  * Car.class
  * Car 객체 생성

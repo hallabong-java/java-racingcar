@@ -21,6 +21,7 @@ import java.util.List;
 
 public class CarNames {
     public static final int MAX_NAME_LENGTH = 5;
+
     private List<CarName> carNamesDivided = new ArrayList<CarName>();
 
     public CarNames(final String carNames) {

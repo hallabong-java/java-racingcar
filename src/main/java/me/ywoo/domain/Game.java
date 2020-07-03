@@ -47,10 +47,10 @@ public class Game {
                 .max(Integer::compareTo)
                 .get();
         List<Car> winners = cars.stream()
-                .filter(car -> car.isWinnerToo(winnerCarPosition))
+                .filter(car -> car.isSame(winnerCarPosition))
                 .collect(Collectors.toList());
         for (Car winner : winners) {
-            winnersName.add(winner.getName());
+            winnersName.add(winner.getName().getCarName());
         }
         return winnersName;
     }

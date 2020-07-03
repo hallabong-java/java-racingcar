@@ -49,7 +49,7 @@ class CarTest {
     @Test
     public void return_True_SamePosition() {
         final Car testCar1 = new Car(new CarName("test"), 4);
-        boolean actual = testCar1.isWinnerToo(4);
+        boolean actual = testCar1.isSame(4);
         assertThat(actual).isEqualTo(true);
     }
 

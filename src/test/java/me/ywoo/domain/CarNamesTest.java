@@ -1,5 +1,5 @@
 /*
- * CarNamesTest.java            1.2       2020-06-26
+ * CarNamesTest.java            1.3       2020-07-03
  *
  * Copyright (c) 2020 Yeonwoo Cho
  * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 차 이름 잘 받는지 테스트
  *
  * @author 조연우
- * @version 1.2     2020년 6월 26일
+ * @version 1.3     2020년 7월 3일
  */
 
 class CarNamesTest {
@@ -33,15 +33,6 @@ class CarNamesTest {
     @ValueSource(strings = {"dusdy,hello"})
     void CarNames_GenerateInstance(final String name) {
         assertThat(new CarNames(name)).isInstanceOf(CarNames.class);
-    }
-
-    @DisplayName("validate() - 이름 다섯글자 이내인지 검사")
-    @ParameterizedTest
-    @ValueSource(strings = {"dusdnSDF,je1231lkjdfedd"})
-    void CarNames_InvalidName_IllegalArgumentExceptionThrown(final String name) {
-        assertThatThrownBy(() -> new CarNames(name))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름은 다섯글자 이내입니다.");
     }
 
     @DisplayName("splitName() - 문자열로 받아서 이름 잘 나누는지 검사")

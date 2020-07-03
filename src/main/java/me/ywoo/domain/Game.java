@@ -10,6 +10,7 @@ package me.ywoo.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -21,23 +22,23 @@ import java.util.stream.Collectors;
  */
 
 public class Game {
-    private static final int INITIALIZE = 0;
+    private static final int INITIALIZE_CAR_POSITION = 0;
 
     private List<Car> cars = new ArrayList<Car>();
-    private List<String> winnersName = new ArrayList<String>();
 
     public Game(CarNames carNames) {
         for (CarName thisCarName : carNames.getNameArray()) {
-            Car addCar = new Car(thisCarName, INITIALIZE);
+            Car addCar = new Car(thisCarName, INITIALIZE_CAR_POSITION);
             cars.add(addCar);
-            if (thisCarName.getCarName().equals("")) throw new IllegalArgumentException("there is nothing");
+            if (thisCarName.getCarName().equals("")) {
+                throw new IllegalArgumentException("there is nothing");
+            }
         }
     }
 
     public void moveAllCars() {
-        RandomNumber randomNumber = new RandomNumber();
         for (Car car : cars) {
-            car.movePosition(randomNumber.generateRandomNumber());
+            car.movePosition(RandomNumber.generateRandomNumber());
         }
     }
 
@@ -45,14 +46,15 @@ public class Game {
         int winnerCarPosition = cars.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
-                .get();
-        List<Car> winners = cars.stream()
+                .orElse(null);
+
+        List<String> winners = cars.stream()
                 .filter(car -> car.isSame(winnerCarPosition))
+                .map(Car::getName)
+                .map(CarName::getCarName)
                 .collect(Collectors.toList());
-        for (Car winner : winners) {
-            winnersName.add(winner.getName().getCarName());
-        }
-        return winnersName;
+
+        return winners;
     }
 
     public List<Car> getCars() {

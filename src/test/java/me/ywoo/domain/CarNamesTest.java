@@ -50,7 +50,10 @@ class CarNamesTest {
     void CarNames_SplitName(final String names) {
         List<CarName> actual = new CarNames(names).getNameArray();
         List<CarName> expected = Arrays.asList(new CarName("test"), new CarName("hi"), new CarName("hello"));
-        assertThat(actual).isEqualTo(expected);
+
+        assertThat(actual.get(0).getCarName()).isEqualTo(expected.get(0).getCarName());
+        assertThat(actual.get(1).getCarName()).isEqualTo(expected.get(1).getCarName());
+        assertThat(actual.get(2).getCarName()).isEqualTo(expected.get(2).getCarName());
     }
 
 }

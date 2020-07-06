@@ -53,11 +53,11 @@ public class GameController {
         OutputView.printResult();
 
         while (countsOfPlays > MINIMUM_TO_GAME) {
-            game.moveAllCars();
+           // game.moveAllCars();
 
             List<Car> cars = game.getCars();
             for (Car car : cars) {
-                OutputView.printEachCars(car.getName().getCarName(), car.getPosition());
+                OutputView.printEachCars(car.getName(), car.getPosition());
             }
             OutputView.println();
             countsOfPlays--;

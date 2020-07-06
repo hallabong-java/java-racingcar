@@ -28,19 +28,19 @@ public class Game {
 
     public Game(CarNames carNames) {
         for (CarName thisCarName : carNames.getNameArray()) {
-            Car addCar = new Car(thisCarName, INITIALIZE_CAR_POSITION);
+            Car addCar = new Car(thisCarName, new Position());
             cars.add(addCar);
             if (thisCarName.getCarName().equals("")) {
                 throw new IllegalArgumentException("there is nothing");
             }
         }
     }
-
+/*
     public void moveAllCars() {
         for (Car car : cars) {
             car.movePosition(RandomNumber.generateRandomNumber());
         }
-    }
+    }*/
 
     public List<String> findWinners() {
         int winnerCarPosition = cars.stream()
@@ -49,9 +49,8 @@ public class Game {
                 .orElse(null);
 
         List<String> winners = cars.stream()
-                .filter(car -> car.isSame(winnerCarPosition))
+                //.filter(car -> car.isSame(winnerCarPosition))
                 .map(Car::getName)
-                .map(CarName::getCarName)
                 .collect(Collectors.toList());
 
         return winners;

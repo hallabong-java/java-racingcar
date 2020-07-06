@@ -19,32 +19,19 @@ import java.util.Optional;
  */
 
 public class Car {
-
-    private static final int MOVABLE_LOWER_BOUND = 4;
-
-    private int position;
+    private Position position;
     private CarName name;
 
-    public Car(CarName carName, int position) {
+    public Car(CarName carName, Position position) {
         this.name = carName;
         this.position = position;
     }
 
-    public void movePosition(int number) {
-        if (number >= MOVABLE_LOWER_BOUND) {
-            this.position++;
-        }
-    }
-
-    public boolean isSame(int winnerPosition) {
-        return this.getPosition() == winnerPosition;
-    }
-
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
-    public CarName getName() {
-        return name;
+    public String getName() {
+        return name.getCarName();
     }
 }

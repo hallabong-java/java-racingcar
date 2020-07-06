@@ -17,12 +17,25 @@ package me.ywoo.domain;
  */
 
 public class Car {
+    private static final int MINIMUM_TO_GO = 4;
+    private static final int MOVING_UNIT = 1;
+
     private CarPosition carPosition;
     private CarName name;
 
     public Car(CarName carName, CarPosition carPosition) {
         this.name = carName;
         this.carPosition = carPosition;
+    }
+
+    public void moveCar(int randomNumber) {
+        if (randomNumber >= MINIMUM_TO_GO) {
+            this.carPosition.movePosition(MOVING_UNIT);
+        }
+    }
+
+    public boolean isSamePosition(int comparedPosition) {
+        return this.carPosition.getPosition() == comparedPosition;
     }
 
     public int getPosition() {

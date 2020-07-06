@@ -18,6 +18,7 @@ package me.ywoo.domain;
 
 public class CarName {
     private static final int MAX_NAME_LENGTH = 5;
+
     public String carName;
 
     public CarName(String carName) {

@@ -11,7 +11,7 @@ class AttemptNumberTest {
     void validateNumber_invalidCounts_exceptionThrown(){
         assertThatThrownBy(()->new AttemptNumber(-3))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1회 이상 게임해야 합니다.");
+                .hasMessage("1회 이상 게임해야 합니다");
     }
 
     @DisplayName("validateCount() - 유효하지 않은 입력 예외처리")

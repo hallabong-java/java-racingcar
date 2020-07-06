@@ -8,15 +8,9 @@
 
 package me.ywoo.controller;
 
-import me.ywoo.domain.Car;
-import me.ywoo.domain.Cars;
-import me.ywoo.domain.CarsFactory;
-import me.ywoo.domain.Game;
+import me.ywoo.domain.*;
 import me.ywoo.view.InputView;
 import me.ywoo.view.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * GameController.class
@@ -28,46 +22,26 @@ import java.util.List;
 
 public class GameController {
     private static final int MINIMUM_TO_GAME = 0;
+
     private int countsOfPlays;
 
-    public static List<Car> realCars = new ArrayList<Car>();
-
     public void run() {
-        Cars cars = new Cars(realCars);
-        CarsFactory.generateCars(InputView.receiveNumber());
-
-        validateCount(inputPlayCounts);
-        Game game = new Game(carsFactory);
-        gameStart(game);
+        Cars cars = new Cars(CarsFactory.generateCars(InputView.receiveNames()));
+        countsOfPlays = AttemptNumber.validateCount(InputView.receiveNumber());
+        gameStart(cars, countsOfPlays);
     }
 
-    private void validateCount(String inputPlayCount) {
-        try {
-            countsOfPlays = Integer.parseInt(inputPlayCount);
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException("횟수는 숫자를 입력해야 합니다.");
-        }
-        if (countsOfPlays <= MINIMUM_TO_GAME) {
-            throw new IllegalArgumentException("1회 이상 게임해야 합니다.");
-        }
-    }
-
-    private void gameStart(Game game) {
-        List<String> winners = new ArrayList<String>();
+    private void gameStart(Cars cars, int countsOfPlays) {
         OutputView.printResult();
 
-        while (countsOfPlays > MINIMUM_TO_GAME) {
-           // game.moveAllCars();
-
-            List<Car> cars = game.getCars();
-            for (Car car : cars) {
+        while (countsOfPlays-- > MINIMUM_TO_GAME) {
+            cars.moveAllCars();
+            for (Car car : cars.getCars()) {
                 OutputView.printEachCars(car.getName(), car.getPosition());
             }
             OutputView.println();
-            countsOfPlays--;
         }
 
-        winners = game.findWinners();
-        OutputView.printWinners(winners);
+        OutputView.printWinners(Cars.findWinners());
     }
 }

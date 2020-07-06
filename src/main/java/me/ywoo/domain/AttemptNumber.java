@@ -2,6 +2,7 @@ package me.ywoo.domain;
 
 public class AttemptNumber {
     private static final int LOWER_BOUND_OF_ATTEMPT = 1;
+
     private static int countsOfPlays;
 
     public AttemptNumber(final int countsOfPlays) {

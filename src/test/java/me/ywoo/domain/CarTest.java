@@ -26,7 +26,8 @@ class CarTest {
     @DisplayName("Car(names)_이름 받아서 객체 생성")
     @Test
     void Car_GenerateInstance() {
-        assertThat(new Car(new CarName("test"), new CarPosition(1))).isInstanceOf(Car.class);
+        assertThat(new Car(new CarName("test"), new CarPosition(1)))
+                .isInstanceOf(Car.class);
     }
 
 }

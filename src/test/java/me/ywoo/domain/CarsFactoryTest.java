@@ -32,12 +32,15 @@ class CarsFactoryTest {
     @ParameterizedTest
     @ValueSource(strings = {"test,hi,hello"})
     void CarsFactory_SplitName_generateInstance(final String names) {
-        CarsFactory carsFactory = new CarsFactory();
-        Cars actual =  carsFactory.generateCars(names);
-        List<Car> expected = Arrays.asList(new Car(new CarName("test"),new CarPosition()),
+        List<Car> actual =  CarsFactory.generateCars(names);
+        List<Car> expected = Arrays.asList(
+                new Car(new CarName("test"),new CarPosition()),
                 new Car(new CarName("hi"),new CarPosition()),
-                new Car(new CarName("hello"),new CarPosition()));
-        assertThat(actual).isEqualTo(expected);
+                new Car(new CarName("hello"),new CarPosition())
+        );
+        assertThat(actual.get(0).getName()).isEqualTo(expected.get(0).getName());
+        assertThat(actual.get(1).getName()).isEqualTo(expected.get(1).getName());
+        assertThat(actual.get(2).getName()).isEqualTo(expected.get(2).getName());
     }
 
 }

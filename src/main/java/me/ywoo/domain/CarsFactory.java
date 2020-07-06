@@ -8,6 +8,9 @@
 
 package me.ywoo.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * CarsFactory.class
  * Car 객체들 만드는 CarsFactory 생성
@@ -18,10 +21,13 @@ package me.ywoo.domain;
 
 public class CarsFactory {
     private static final String DELIMITER = ",";
-    public static void generateCars(final String carNames) {
+
+    public static List<Car> generateCars(final String carNames) {
+        List<Car> cars = new ArrayList<Car>();
         for (String name : carNames.split(DELIMITER)) {
             Car newCar = new Car(new CarName(name), new CarPosition());
-            Cars.addCar(newCar);
+            cars.add(newCar);
         }
+        return cars;
     }
 }

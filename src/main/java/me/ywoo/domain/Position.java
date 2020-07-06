@@ -8,8 +8,6 @@
 
 package me.ywoo.domain;
 
-import org.omg.CORBA.INITIALIZE;
-
 /**
  * Position.class
  * Position 객체 생성

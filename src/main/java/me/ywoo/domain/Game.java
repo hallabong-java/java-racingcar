@@ -10,7 +10,6 @@ package me.ywoo.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -26,8 +25,8 @@ public class Game {
 
     private List<Car> cars = new ArrayList<Car>();
 
-    public Game(CarNames carNames) {
-        for (CarName thisCarName : carNames.getNameArray()) {
+    public Game(CarsFactory carsFactory) {
+        for (CarName thisCarName : carsFactory.getNameArray()) {
             Car addCar = new Car(thisCarName, new Position());
             cars.add(addCar);
             if (thisCarName.getCarName().equals("")) {

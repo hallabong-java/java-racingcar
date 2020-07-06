@@ -27,13 +27,13 @@ class GameTest {
     @DisplayName("Game()-List에 car객체들을 생성하는 함수")
     @Test
     void Game_GenerateInstance() {
-        assertThat(new Game(new CarNames("hi,hello"))).isInstanceOf(Game.class);
+        assertThat(new Game(new CarsFactory("hi,hello"))).isInstanceOf(Game.class);
     }
 
     @DisplayName("Game()-받아온 이름에 아무것도 없을때 예외처리하는 함수")
     @Test
     void Game_Except_Null_Instance() {
-        assertThatThrownBy(() -> new Game(new CarNames("")))
+        assertThatThrownBy(() -> new Game(new CarsFactory("")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("there is nothing");
     }

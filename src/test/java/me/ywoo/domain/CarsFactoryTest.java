@@ -33,11 +33,10 @@ class CarsFactoryTest {
     @ValueSource(strings = {"test,hi,hello"})
     void CarsFactory_SplitName_generateInstance(final String names) {
         CarsFactory carsFactory = new CarsFactory();
-        carsFactory.generateCars(names);
-        List<Car> actual = carsFactory.getCars();
-        List<Car> expected = Arrays.asList(new Car(new CarName("test"),new Position()),
-                new Car(new CarName("hi"),new Position()),
-                new Car(new CarName("hello"),new Position()));
+        Cars actual =  carsFactory.generateCars(names);
+        List<Car> expected = Arrays.asList(new Car(new CarName("test"),new CarPosition()),
+                new Car(new CarName("hi"),new CarPosition()),
+                new Car(new CarName("hello"),new CarPosition()));
         assertThat(actual).isEqualTo(expected);
     }
 

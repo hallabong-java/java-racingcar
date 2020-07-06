@@ -23,11 +23,9 @@ import java.util.stream.Collectors;
 public class Game {
     private static final int INITIALIZE_CAR_POSITION = 0;
 
-    private List<Car> cars = new ArrayList<Car>();
-
     public Game(CarsFactory carsFactory) {
-        for (CarName thisCarName : carsFactory.getNameArray()) {
-            Car addCar = new Car(thisCarName, new Position());
+        for (Car car : Cars.getCars()) {
+            Car addCar = new Car(thisCarName, new CarPosition());
             cars.add(addCar);
             if (thisCarName.getCarName().equals("")) {
                 throw new IllegalArgumentException("there is nothing");

@@ -23,13 +23,10 @@ import me.ywoo.view.OutputView;
 public class GameController {
     private static final int MINIMUM_TO_GAME = 0;
 
-    private int countsOfPlays;
-
     public void run() {
         Cars cars = new Cars(CarsFactory.generateCars(InputView.receiveNames()));
         AttemptNumber attemptNumber = new AttemptNumber(InputView.receiveNumber());
-        countsOfPlays = attemptNumber.countsOfPlays;
-        gameStart(cars, countsOfPlays);
+        gameStart(cars, attemptNumber.countsOfPlays);
     }
 
     private void gameStart(Cars cars, int countsOfPlays) {

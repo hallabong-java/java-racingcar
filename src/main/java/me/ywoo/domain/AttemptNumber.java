@@ -10,7 +10,7 @@ public class AttemptNumber {
     }
 
     private int validateNumber(int number) {
-        if(number<LOWER_BOUND_OF_ATTEMPT){
+        if (number < LOWER_BOUND_OF_ATTEMPT) {
             throw new IllegalArgumentException("1회 이상 게임해야 합니다");
         }
         return number;
@@ -19,7 +19,7 @@ public class AttemptNumber {
     public int validateCount(String inputPlayCount) {
         try {
             countsOfPlays = Integer.parseInt(inputPlayCount);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("횟수는 숫자를 입력해야 합니다.");
         }
         return countsOfPlays;

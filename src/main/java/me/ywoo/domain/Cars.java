@@ -23,13 +23,12 @@ public class Cars {
         int NeedCarPosition = cars.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
-                .orElse(null);
+                .orElseThrow(null) ;
 
-        List<String> winners = cars.stream()
+        return cars.stream()
                 .filter(car->car.isSamePosition(NeedCarPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
-        return winners;
     }
 
     public void moveAllCars() {

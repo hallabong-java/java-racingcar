@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-    public static List<Car> cars;
+    public List<Car> cars;
 
     public Cars(final List<Car> cars) {
         validateCars(cars);
@@ -19,7 +19,7 @@ public class Cars {
         }
     }
 
-    public static List<String> findWinners() {
+    public List<String> findWinners() {
         int NeedCarPosition = cars.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
@@ -38,7 +38,7 @@ public class Cars {
         }
     }
 
-    public static List<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 }

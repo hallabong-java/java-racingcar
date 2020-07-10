@@ -40,6 +40,6 @@ public class GameController {
             OutputView.println();
         }
 
-        OutputView.printWinners(Cars.findWinners());
+        OutputView.printWinners(cars.findWinners());
     }
 }

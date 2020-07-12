@@ -26,7 +26,7 @@ public class GameController {
     public void run() {
         Cars cars = new Cars(CarsFactory.generateCars(InputView.receiveNames()));
         AttemptNumber attemptNumber = new AttemptNumber(InputView.receiveNumber());
-        gameStart(cars, attemptNumber.countsOfPlays);
+        gameStart(cars, attemptNumber.getCountsOfPlays());
     }
 
     private void gameStart(Cars cars, int countsOfPlays) {

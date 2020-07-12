@@ -3,7 +3,7 @@ package me.ywoo.domain;
 public class AttemptNumber {
     private static final int LOWER_BOUND_OF_ATTEMPT = 1;
 
-    public static int countsOfPlays;
+    private int countsOfPlays;
 
     public AttemptNumber(final String inputPlayCount) {
         this.countsOfPlays = validateNumber(validateCount(inputPlayCount));
@@ -22,6 +22,10 @@ public class AttemptNumber {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("횟수는 숫자를 입력해야 합니다.");
         }
+        return countsOfPlays;
+    }
+
+    public int getCountsOfPlays() {
         return countsOfPlays;
     }
 }

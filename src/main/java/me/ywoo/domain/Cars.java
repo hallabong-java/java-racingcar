@@ -1,6 +1,7 @@
 package me.ywoo.domain;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class Cars {
         int NeedCarPosition = cars.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo)
-                .orElseThrow(null) ;
+                .orElseThrow(()->new NoSuchElementException("NOTHING IS HERE")) ;
 
         return cars.stream()
                 .filter(car->car.isSamePosition(NeedCarPosition))

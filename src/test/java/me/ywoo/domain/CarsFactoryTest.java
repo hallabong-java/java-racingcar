@@ -1,0 +1,46 @@
+/*
+ * CarsFactoryTest.java            1.3       2020-07-03
+ *
+ * Copyright (c) 2020 Yeonwoo Cho
+ * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
+ * All rights reserved
+ */
+
+package me.ywoo.domain;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+/**
+ * CarsFactoryTest.class
+ * 차 이름 잘 받는지 테스트
+ *
+ * @author 조연우
+ * @version 1.3     2020년 7월 3일
+ */
+
+class CarsFactoryTest {
+
+    @DisplayName("generateCars() - 문자열로 받아서 이름 잘 나눠서 차 만드는지 검사")
+    @ParameterizedTest
+    @ValueSource(strings = {"test,hi,hello"})
+    void CarsFactory_SplitName_generateInstance(final String names) {
+        List<Car> actual =  CarsFactory.generateCars(names);
+        List<Car> expected = Arrays.asList(
+                new Car(new CarName("test"),new CarPosition()),
+                new Car(new CarName("hi"),new CarPosition()),
+                new Car(new CarName("hello"),new CarPosition())
+        );
+        assertThat(actual.get(0).getName()).isEqualTo(expected.get(0).getName());
+        assertThat(actual.get(1).getName()).isEqualTo(expected.get(1).getName());
+        assertThat(actual.get(2).getName()).isEqualTo(expected.get(2).getName());
+    }
+
+}
